@@ -13,14 +13,12 @@ detectStringLength('wwww',5);
 //Функция для проверки, является ли строка палиндромом.
 
 const detectStringPalindrom = (string) => {
-  const newString = string.replaceAll(' ', '');
-  newString.toLowerCase();
+  const newString = string.replaceAll(' ', '').toLowerCase();
   let reverseString = '';
   console.log(newString.toLowerCase());
 
   for(let i = newString.length - 1; i >= 0; i = i - 1) {
-    reverseString += newString.at(i);
-    reverseString.toLowerCase();
+    reverseString += newString.at(i).toLowerCase();
     console.log(reverseString);
   }
 
@@ -32,4 +30,4 @@ const detectStringPalindrom = (string) => {
   return 'Это не палиндром';
 };
 
-detectStringPalindrom('Шалаш');
+detectStringPalindrom('ШалаШ');
