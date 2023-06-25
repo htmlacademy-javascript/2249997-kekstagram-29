@@ -56,7 +56,7 @@ const createObject = (id) => ({
 
 });
 
-const photos = () => Array.from({length: SIMILAR_GALLERY_OBJECTS}, (_, index) => createObject(arrayForId[index]));
+const getPhotos = () => Array.from({length: SIMILAR_GALLERY_OBJECTS}, (_, index) => createObject(arrayForId[index]));
 
-export {photos};
+export {getPhotos};
 
