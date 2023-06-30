@@ -32,7 +32,7 @@ const COMMENTS_MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-const SIMILAR_GALLERY_OBJECTS = 2;
+const SIMILAR_GALLERY_OBJECTS = 25;
 const MIN_NUMBER_OF_LIKES = 15;
 const MAX_NUMBER_OF_LIKES = 200;
 
