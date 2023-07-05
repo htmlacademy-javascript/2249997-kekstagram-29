@@ -25,5 +25,9 @@ function getRandomInteger(a, b) {
   return Math.floor(result);
 }
 
+const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterKey = (evt) => evt.key === 'Enter';
+
 export {generateArrayRandomNumber};
 export {getRandomInteger};
+export {isEscapeKey, isEnterKey};

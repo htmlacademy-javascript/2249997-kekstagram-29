@@ -1,5 +1,4 @@
 import {getPhotos} from './data.js';
-import './full-screen-rendering.js';
 
 // Место куда будем загружать фото
 const photoListElement = document.querySelector('.pictures');
