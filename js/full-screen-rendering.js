@@ -14,7 +14,7 @@ const onDocumentKeyDown = (evt) => {
 
 // Функция открытия полноразмерного изображения
 function openFullImage () {
-  fullImage.classList.remove('hidden');
+  fullImage.classList.remove('.hidden');
 
   document.addEventListener('keydown', onDocumentKeyDown);
 
@@ -30,7 +30,7 @@ function openFullImage () {
 
 // Функция закрытия полноразмерного изображения
 function closeFullImage () {
-  fullImage.classList.add('hidden');
+  fullImage.classList.add('.hidden');
 
   document.removeEventListener('keydown', onDocumentKeyDown);
 
