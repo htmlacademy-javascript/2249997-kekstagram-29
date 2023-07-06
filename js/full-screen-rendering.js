@@ -1,8 +1,6 @@
-import {getThumbnails} from './thumbnail-rendering.js';
-getThumbnails();
-import {isEscapeKey, isEnterKey} from './util.js';
+import {isEscapeKey} from './util.js';
 
-const thumbnailOpenElement = document.querySelectorAll('.picture');
+
 const fullImageCloseElement = document.querySelector('.big-picture__cancel');
 const fullImage = document.querySelector('.big-picture');
 
@@ -19,6 +17,15 @@ function openFullImage () {
   fullImage.classList.remove('hidden');
 
   document.addEventListener('keydown', onDocumentKeyDown);
+
+  // Навесил класс чтобы контейнер с фотографиями позади не прокручивался при скролле
+  document.querySelector('body').classList.add('.modal-open');
+
+  // спрячьте блоки счётчика комментариев
+  document.querySelector('.social__comment-count').classList.add('.hidden');
+
+  // спрячьте блоки загрузки новых комментариев
+  document.querySelector('.comments-loader').classList.add('.hidden');
 }
 
 // Функция закрытия полноразмерного изображения
@@ -26,6 +33,9 @@ function closeFullImage () {
   fullImage.classList.add('hidden');
 
   document.removeEventListener('keydown', onDocumentKeyDown);
+
+  // Убрал класс чтобы контейнер с фотографиями позади не прокручивался при скролле
+  document.querySelector('body').classList.remove('.modal-open');
 }
 
 // закрываем фото c клика по крестику
@@ -33,24 +43,4 @@ fullImageCloseElement.addEventListener('click', () => {
   closeFullImage();
 });
 
-// перебираем миниатюры
-thumbnailOpenElement.forEach((thumbnail) => {
-  thumbnail.addEventListener('click', () => {
-    openFullImage();
-  });
-
-  thumbnail.addEventListener('keydown', (evt) => {
-    if(isEnterKey(evt)) {
-      openFullImage();
-    }
-  });
-
-  // const picture = document.querySelector('.picture__img');
-  // заполняем данные для окна полноразмерного изображения
-  fullImage.querySelector('.big-picture__img img').src = thumbnail.src;
-  fullImage.querySelector('.likes-count').textContent = thumbnail.likes;
-  // fullImage.querySelector('.comments-count').textContent = thumbnail.comments.length;
-  // fullImage.querySelector('.social__caption') = thumbnail.description;
-// const fullImageCommentsList = document.querySelector('.social__comments');
-});
-
+export {openFullImage, closeFullImage};
