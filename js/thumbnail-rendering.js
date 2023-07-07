@@ -1,4 +1,4 @@
-import {getPhotos} from './data.js';
+import {getPhotos, createComment} from './data.js';
 import { isEscapeKey } from './util.js';
 import { closeFullImage, openFullImage } from './full-screen-rendering.js';
 
@@ -56,6 +56,9 @@ const getThumbnails = () => {
         commentElement.querySelector('p').textContent = message;
 
         commentBox.appendChild(commentElement);
+
+        const commentItem = createComment(avatar, message, name);
+        commentBox.appendChild(commentItem);
       });
     });
 

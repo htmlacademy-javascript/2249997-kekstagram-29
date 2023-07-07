@@ -22,10 +22,10 @@ function openFullImage () {
   document.querySelector('body').classList.add('modal-open');
 
   // спрячьте блоки счётчика комментариев
-  document.querySelector('.social__comment-count').classList.add('hidden');
+  // document.querySelector('.social__comment-count').classList.add('hidden');
 
   // спрячьте блоки загрузки новых комментариев
-  document.querySelector('.comments-loader').classList.add('hidden');
+  // document.querySelector('.comments-loader').classList.add('hidden');
 }
 
 // Функция закрытия полноразмерного изображения
