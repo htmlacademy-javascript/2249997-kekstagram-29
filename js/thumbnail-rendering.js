@@ -1,4 +1,4 @@
-import {getPhotos, createComment} from './data.js';
+import {getPhotos} from './data.js';
 import { isEscapeKey } from './util.js';
 import { closeFullImage, openFullImage } from './full-screen-rendering.js';
 
@@ -27,7 +27,7 @@ const getThumbnails = () => {
     photoElement.querySelector('.picture__likes').textContent = likes;
     photoElement.querySelector('.picture__comments').textContent = comments.length;
 
-    // Вешаем обработчики клика для открытия из миниатюры полного изображения
+    // Вешаем обработчики клика для открытия из миниатюры большой картинки
     photoElement.addEventListener('click', (evt) => {
       openFullImage();
       // Вешаем обработчики на клавишу ESC
@@ -55,10 +55,32 @@ const getThumbnails = () => {
         commentElement.querySelector('img').alt = name;
         commentElement.querySelector('p').textContent = message;
 
-        commentBox.appendChild(commentElement);
+        // СОЗДАЕМ НОВЫЕ КОММЕНТЫ
+        const createDomElement = (tag, className, text) => {
+          const domElement = document.createElement(tag);
+          domElement.classList.add(className);
 
-        const commentItem = createComment(avatar, message, name);
-        commentBox.appendChild(commentItem);
+          if(text) {
+            domElement.textContent = text;
+          }
+          return domElement;
+        };
+
+        const imageSize = 35;
+
+        const listItem = createDomElement('li', 'social__comment');
+        const paragraph = createDomElement('p', 'social__text', message);
+        const image = createDomElement('img', 'social__picture');
+
+        image.src = avatar;
+        image.alt = name;
+        image.style.width = `${imageSize}px`;
+        image.style.height = `${imageSize}px`;
+
+        listItem.append(image, paragraph);
+
+        commentBox.appendChild(listItem);
+        commentBox.appendChild(commentElement);
       });
     });
 
