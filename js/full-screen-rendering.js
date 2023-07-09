@@ -22,10 +22,10 @@ function openFullImage () {
   document.querySelector('body').classList.add('modal-open');
 
   // спрячьте блоки счётчика комментариев
-  document.querySelector('.social__comment-count').classList.add('hidden');
+  // document.querySelector('.social__comment-count').classList.add('hidden');
 
   // спрячьте блоки загрузки новых комментариев
-  document.querySelector('.comments-loader').classList.add('hidden');
+  // document.querySelector('.comments-loader').classList.add('hidden');
 }
 
 // Функция закрытия полноразмерного изображения
@@ -35,7 +35,7 @@ function closeFullImage () {
   document.removeEventListener('keydown', onDocumentKeyDown);
 
   // Убрал класс чтобы контейнер с фотографиями позади не прокручивался при скролле
-  document.querySelector('body').classList.remove('.modal-open');
+  document.querySelector('body').classList.remove('modal-open');
 }
 
 // закрываем фото c клика по крестику
