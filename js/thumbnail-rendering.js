@@ -31,7 +31,7 @@ const getThumbnails = () => {
     photoElement.addEventListener('click', (evt) => {
       openFullImage();
       // Вешаем обработчики на клавишу ESC
-      document.addEventListener('keydown', () => {
+      document.addEventListener('keydown', (evt) => {
         if(isEscapeKey(evt)) {
           evt.preventDefault();
           closeFullImage();
@@ -45,43 +45,25 @@ const getThumbnails = () => {
       document.querySelector('.social__caption').textContent = description;
 
       // СПИСОК КОММЕНТАРИЕВ
-      comments.forEach((commentData) => {
-        const {avatar, message, name} = commentData;
-        const commentBox = document.querySelector('.social__comments');
-        const commentElement = document.querySelector('.social__comment');
+      const commentBox = document.querySelector('.social__comments');
+      const commentToShow = 5;
+      commentBox.innerHTML = '';
+      for (let i = 0; i <= comments.length; i++) {
+
+        // comments.forEach((commentData) => {
+        //   const {avatar, message, name} = commentData;
+
+        const commentElement = document.querySelector('.social__comment').cloneNode(true);
 
         // заполняем данные для комментария
-        commentElement.querySelector('img').src = avatar;
-        commentElement.querySelector('img').alt = name;
-        commentElement.querySelector('p').textContent = message;
+        commentElement.querySelector('img').src = comments[i].avatar;
+        commentElement.querySelector('img').alt = comments[i].name;
+        commentElement.querySelector('p').textContent = comments[i].message;
 
-        // СОЗДАЕМ НОВЫЕ КОММЕНТЫ
-        const createDomElement = (tag, className, text) => {
-          const domElement = document.createElement(tag);
-          domElement.classList.add(className);
-
-          if(text) {
-            domElement.textContent = text;
-          }
-          return domElement;
-        };
-
-        const imageSize = 35;
-
-        const listItem = createDomElement('li', 'social__comment');
-        const paragraph = createDomElement('p', 'social__text', message);
-        const image = createDomElement('img', 'social__picture');
-
-        image.src = avatar;
-        image.alt = name;
-        image.style.width = `${imageSize}px`;
-        image.style.height = `${imageSize}px`;
-
-        listItem.append(image, paragraph);
-
-        commentBox.appendChild(listItem);
         commentBox.appendChild(commentElement);
-      });
+        // });
+      }
+
     });
 
     thumbnailFragment.appendChild(photoElement);
